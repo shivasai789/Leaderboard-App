@@ -83,7 +83,7 @@ app.post("/api/claim",async (req,res) => {
     }
 })
 
-mongoose.connect('mongodb+srv://shivasai789:shivasai_789@backend.6r92h.mongodb.net/?retryWrites=true&w=majority&appName=Backend')
+mongoose.connect('mongodb+srv://shivasai789:shivasai_789@backend.6r92h.mongodb.net/LeaderboardDB?retryWrites=true&w=majority&appName=Backend')
   .then(() => {
      console.log('Connected to MongoDB')
      app.listen(port,() => {
