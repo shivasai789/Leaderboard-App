@@ -34,13 +34,12 @@ const Leaderboard = () => {
   const showNotification = (message, type) => {
     setNotification({ message, type });
     
-    // Use a timeout to add 'show' class for transition
     setTimeout(() => {
         setNotification((prev) => ({ ...prev, show: true }));
-    }, 10); // Small delay for the class to take effect
+    }, 10);
 
     setTimeout(() => {
-        setNotification({ message: '', type: '', show: false }); // Clear notification after 3 seconds
+        setNotification({ message: '', type: '', show: false });
     }, 3000);
 };
 

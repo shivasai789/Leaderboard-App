@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { Card, Button, Form } from 'react-bootstrap';
-import Notification from '../Notifications'; // Import Notification component
+import Notification from '../Notifications'; 
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
@@ -29,15 +29,14 @@ const UserList = () => {
       try {
         const res = await axios.post('http://localhost:3000/api/claim', { userId: selectedUser });
         
-        // Assuming the API returns a success message or points claimed
         setPoints(res.data.points);
-        showNotification('Points claimed successfully!', 'success'); // Success notification
+        showNotification('Points claimed successfully!', 'success'); 
       } catch (error) {
         console.error(error);
-        showNotification('Failed to claim points, please try again.', 'error'); // Error notification
+        showNotification('Failed to claim points, please try again.', 'error');
       }
     } else {
-      showNotification('Please select a user to claim points.', 'error'); // Notification when no user is selected
+      showNotification('Please select a user to claim points.', 'error'); 
     }
   };
   
@@ -75,13 +74,12 @@ const UserList = () => {
   const showNotification = (message, type) => {
     setNotification({ message, type });
     
-    // Use a timeout to add 'show' class for transition
     setTimeout(() => {
         setNotification((prev) => ({ ...prev, show: true }));
-    }, 10); // Small delay for the class to take effect
+    }, 10);
 
     setTimeout(() => {
-        setNotification({ message: '', type: '', show: false }); // Clear notification after 3 seconds
+        setNotification({ message: '', type: '', show: false });
     }, 3000);
 };
 
