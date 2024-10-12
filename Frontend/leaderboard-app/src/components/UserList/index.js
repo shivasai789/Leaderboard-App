@@ -13,7 +13,7 @@ const UserList = () => {
 
   const fetchUsers = useCallback(async () => {
     try {
-      const res = await axios.get('http://localhost:3000/api/users');
+      const res = await axios.get('https://leaderboard-app-backend-tl3i.onrender.com/api/users');
       setUsers(res.data);
     } catch (error) {
       showNotification('Failed to fetch users. Please try again.', 'error');
@@ -27,7 +27,7 @@ const UserList = () => {
   const handleClaimPoints = async () => {
     if (selectedUser) {
       try {
-        const res = await axios.post('http://localhost:3000/api/claim', { userId: selectedUser });
+        const res = await axios.post('https://leaderboard-app-backend-tl3i.onrender.com/api/claim', { userId: selectedUser });
         
         setPoints(res.data.points);
         showNotification('Points claimed successfully!', 'success'); 
@@ -52,7 +52,7 @@ const UserList = () => {
   const onClickAddNewUser = async () => {
     if (addUser.name !== "" && addUser.points !== "") {
       try {
-        const res = await axios.post('http://localhost:3000/api/user', addUser);
+        const res = await axios.post('https://leaderboard-app-backend-tl3i.onrender.com/api/user', addUser);
         console.log(res)
         showNotification('User added successfully!', 'success');
         setUsers([...users, res.data]); 
