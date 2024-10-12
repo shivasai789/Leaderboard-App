@@ -10,7 +10,7 @@ const Leaderboard = () => {
 
   const fetchRankings = useCallback(async () => {
     try {
-      const res = await axios.get('http://localhost:3000/api/users/rankings');
+      const res = await axios.get('https://leaderboard-app-backend-tl3i.onrender.com/api/users/rankings');
       setRankings(res.data);
     } catch (error) {
       showNotification('Failed to fetch leaderboard. Please try again.', 'error');
@@ -23,7 +23,7 @@ const Leaderboard = () => {
 
   const onClickDeleteUser = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/user/${id}`);
+      await axios.delete(`https://leaderboard-app-backend-tl3i.onrender.com/api/user/${id}`);
       showNotification('User deleted successfully.', 'success');
       fetchRankings(); // Refresh rankings after deletion
     } catch (error) {
