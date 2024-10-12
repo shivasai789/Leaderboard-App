@@ -10,7 +10,7 @@ const app = express()
 //middleware
 app.use(express.json())
 app.use(cors({
-  origin: 'https://leaderboard-app-gamma.vercel.app/' 
+  origin: 'https://leaderboard-app-psi.vercel.app/' 
 }));
 
 
