@@ -9,10 +9,9 @@ const app = express()
 
 //middleware
 app.use(express.json())
-app.use(cors({
-  origin: 'https://leaderboard-app-psi.vercel.app/' 
-}));
+app.use(cors());
 
+const port = process.env.PORT || 3000
 
 app.get("/",(req,res) => {
     res.send("Hi from Backend")
@@ -68,16 +67,13 @@ app.post("/api/claim",async (req,res) => {
     // Generate random points between 1-10
     const points = Math.floor(Math.random() * 10) + 1;
 
-    // Update the user's total points
     const user = await Users.findById(userId);
     user.points += points;
     await user.save();
 
-    // Save claim history
     const claimHistory = new ClaimHistory({ userId, points });
     await claimHistory.save();
 
-    // Get updated user rankings
     const rankings = await Users.find().sort({ points: -1 });
 
     res.status(200).json({ user, points, rankings });
@@ -90,7 +86,7 @@ app.post("/api/claim",async (req,res) => {
 mongoose.connect('mongodb+srv://mamidalashivasai789:oEWq0SNck7oyC7Zr@backend.6r92h.mongodb.net/LeaderboardDB?retryWrites=true&w=majority&appName=Backend')
   .then(() => {
      console.log('Connected to MongoDB')
-     app.listen(3000,() => {
+     app.listen(port,() => {
         console.log("server is running...")
     })
   }).catch(err => {
