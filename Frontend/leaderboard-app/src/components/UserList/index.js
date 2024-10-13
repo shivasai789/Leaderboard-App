@@ -163,7 +163,7 @@ const UserList = () => {
           )}
         </Card.Body>
         <div style={{ display: "flex", justifyContent: "center" }}>
-          {isLoading && (
+          {isLoading && isAddUser && (
             <ThreeDots
               visible={true}
               height="40"
