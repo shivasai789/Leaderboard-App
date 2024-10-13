@@ -15,9 +15,7 @@ const UserList = () => {
 
   const fetchUsers = useCallback(async () => {
     try {
-      const res = await axios.get(
-        "https://leaderboard-app-backend-tl3i.onrender.com/api/users"
-      );
+      const res = await axios.get('https://leaderboard-app-backend-tl3i.onrender.com/api/users');
       setUsers(res.data);
     } catch (error) {
       showNotification("Failed to fetch users. Please try again.", "error");
@@ -38,11 +36,8 @@ const UserList = () => {
     setIsLoading(true);
     if (selectedUser) {
       try {
-        const res = await axios.post(
-          "https://leaderboard-app-backend-tl3i.onrender.com/api/users/claim",
-          { userId: selectedUser }
-        );
-
+        const res = await axios.post('https://leaderboard-app-backend-tl3i.onrender.com/api/users/claim', { userId: selectedUser });
+        
         setPoints(res.data.points);
         showNotification("Points claimed successfully!", "success");
         setIsLoading(false);
@@ -70,16 +65,12 @@ const UserList = () => {
     setIsLoading(true);
     if (addUser.name !== "" && addUser.points !== "") {
       try {
-        const res = await axios.post(
-          "https://leaderboard-app-backend-tl3i.onrender.com/api/users",
-          addUser
-        );
-        console.log(res);
-        showNotification("User added successfully!", "success");
-        setUsers([...users, res.data]);
-        setAddUser({ name: "", points: "" });
-        setIsAddUser(false);
-        setIsLoading(false);
+        const res = await axios.post('https://leaderboard-app-backend-tl3i.onrender.com/api/users', addUser);
+        console.log(res)
+        showNotification('User added successfully!', 'success');
+        setUsers([...users, res.data]); 
+        setAddUser({ name: '', points: '' }); 
+        setIsAddUser(false); 
       } catch (error) {
         showNotification("Failed to add user. Please try again.", "error");
         setIsLoading(false);

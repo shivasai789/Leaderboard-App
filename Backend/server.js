@@ -23,8 +23,8 @@ app.get("/",(req,res) => {
     res.send("Hi from Backend")
 })
 
-//connecting to database and server
-mongoose.connect('mongodb+srv://shivasai789:shivasai_789@backend.6r92h.mongodb.net/LeaderboardDB?retryWrites=true&w=majority&appName=Backend')
+//connect to database
+mongoose.connect('mongodb+srv://mamidalashivasai789:oEWq0SNck7oyC7Zr@backend.6r92h.mongodb.net/LeaderboardDB?retryWrites=true&w=majority&appName=Backend')
   .then(() => {
      console.log('Connected to MongoDB')
      app.listen(port,() => {
