@@ -1,3 +1,4 @@
+require("dotenv").config(); 
 const express = require("express")
 const mongoose = require("mongoose")
 const cors = require("cors")
@@ -24,7 +25,7 @@ app.get("/",(req,res) => {
 })
 
 //connect to database
-mongoose.connect('mongodb+srv://mamidalashivasai789:oEWq0SNck7oyC7Zr@backend.6r92h.mongodb.net/LeaderboardDB?retryWrites=true&w=majority&appName=Backend')
+mongoose.connect(process.env.MONGO_URI)
   .then(() => {
      console.log('Connected to MongoDB')
      app.listen(port,() => {
